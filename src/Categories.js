@@ -1,23 +1,45 @@
 import React from 'react';
 import jQuery from 'jquery';
+import {Link} from 'react-router'
 
 class Categories extends React.Component {
-  componentDidMount(){
-      var self = this;
-      jQuery.getJSON("https://glacial-taiga-31766.herokuapp.com/categories.json", function(data){
-        console.log(data);
-        //only here the this get's other value
-        self.setState({
-          categories: data.categories
-        });
-      });
-    }
+  constructor(){
+    super();
 
+    this.state = {
+      categories: []
+    };
+  }
+
+  componentDidMount() {
+    this.getCategories();
+  }
+
+  getCategories() {
+    let component = this;
+    let url = "https://glacial-taiga-31766.herokuapp.com/categories.json";
+    jQuery.getJSON(url, function(data){
+      component.setState({
+        categories: data.categories
+      });
+    });
+  }
 
   render() {
     return (
-        <h1>Categories</h1>
-    );
+        <div className="categories">
+          <h1>Categories</h1>
+          <ul>
+            {this.state.categories.map(function(category){
+              return(
+                <li key={category.id}>
+                <Link to={`/categories/${category.id}`}>{category.name}</Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+    )
   }
 }
 
