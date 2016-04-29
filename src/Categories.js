@@ -1,6 +1,6 @@
 import React from 'react';
 import jQuery from 'jquery';
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 
 class Categories extends React.Component {
   constructor(){
@@ -17,7 +17,7 @@ class Categories extends React.Component {
 
   getCategories() {
     let component = this;
-    let url = "https://glacial-taiga-31766.herokuapp.com/categories.json";
+    let url = "https://intense-spire-92751.herokuapp.com/categories.json";
     jQuery.getJSON(url, function(data){
       component.setState({
         categories: data.categories
