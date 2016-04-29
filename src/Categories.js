@@ -25,7 +25,7 @@ class Categories extends React.Component {
         category: data.category
       });
     });
-  }
+  } 
 
   render() {
     return (
