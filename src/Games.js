@@ -17,7 +17,7 @@ class Games extends React.Component {
 
   getGames() {
     let component = this;
-    let url = "https://intense-spire-92751.herokuapp.com/categories/"+this.props.params.categoryId+"/games.json";
+    let url = "http://localhost:3000/categories/"+this.props.params.categoryId+"/games.json";
     jQuery.getJSON(url, function(data){
       component.setState({
         games: data.games

@@ -7,7 +7,8 @@ class Categories extends React.Component {
     super();
 
     this.state = {
-      categories: []
+      categories: [],
+      category: [],
     };
   }
 
@@ -17,10 +18,11 @@ class Categories extends React.Component {
 
   getCategories() {
     let component = this;
-    let url = "https://intense-spire-92751.herokuapp.com/categories.json";
+    let url = "http://localhost:3000/categories.json";
     jQuery.getJSON(url, function(data){
       component.setState({
-        categories: data.categories
+        categories: data.categories,
+        category: data.category
       });
     });
   }
